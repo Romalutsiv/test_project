@@ -1,0 +1,1 @@
+create table user_table (id bigint not null, birthday date, firstname varchar(255), lastname varchar(255), primary key (id))
