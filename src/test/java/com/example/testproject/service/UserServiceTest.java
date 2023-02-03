@@ -1,26 +1,26 @@
-package com.example.testproject;
+package com.example.testproject.service;
 
+import com.example.testproject.TestProjectApplication;
 import com.example.testproject.exception.UserNotFoundException;
 import com.example.testproject.model.User;
 import com.example.testproject.model.UserResponse;
-import com.example.testproject.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
 
-@SpringBootTest
+@SpringBootTest(classes = TestProjectApplication.class)
 public class UserServiceTest {
     static User user;
-    UserService userService;
     @Autowired
-    public UserServiceTest(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
+
+
 
     @BeforeAll
     static void init(){
@@ -41,5 +41,13 @@ public class UserServiceTest {
     @Test
     public void getUserByIdExceptionTest(){
         Assertions.assertThrows(UserNotFoundException.class, () -> userService.getUserById(1000l));
+    }
+    @Test
+    public void getAgeFromNullUser(){
+        Assertions.assertThrows(NullPointerException.class, () -> userService.getAge(null));
+    }
+    @Test
+    public void getAgeFromNullBirthday(){
+        Assertions.assertThrows(NullPointerException.class, () -> userService.getAge(new User()));
     }
 }

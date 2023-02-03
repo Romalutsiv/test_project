@@ -5,6 +5,7 @@ import com.example.testproject.exception.UserNotFoundException;
 import com.example.testproject.model.User;
 import com.example.testproject.repository.UserRepository;
 import com.example.testproject.service.UserService;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,15 +27,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int getAge(User user) {
+    public int getAge(@NotNull User user) {
+//        if (user == null) throw new UserNotFoundException("User cannot be null");
+//        if (user.getBirthday() == null) throw new UserNotFoundException("User's birthday cannot be null");
         LocalDate today = LocalDate.now();
         int age = today.getYear() - user.getBirthday().getYear();
         if(today.getMonthValue() - user.getBirthday().getMonthValue() < 0) age -= 1;
         else if( today.getMonthValue() - user.getBirthday().getMonthValue() == 0) {
             if (today.getDayOfMonth() - user.getBirthday().getDayOfMonth() < 0) age -= 1;
         }
-
-
         return age;
     }
 }

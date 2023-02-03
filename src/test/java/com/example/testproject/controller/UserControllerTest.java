@@ -1,23 +1,30 @@
-package com.example.testproject;
+package com.example.testproject.controller;
 
 import com.example.testproject.model.UserResponse;
 import com.example.testproject.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class UserControllerTest {
+class UserControllerTest {
+
     @Autowired
     private MockMvc mvc;
+
     @Autowired
     private UserService userService;
+
     private final long VALID_ID = 1l;
     @Test
     public void getUserByIdStatus200Test() throws Exception {
@@ -48,4 +55,6 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Id must be the number!"));
 
     }
+
+
 }
