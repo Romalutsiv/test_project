@@ -28,8 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int getAge(@NotNull UserEntity user) {
-//        if (user == null) throw new UserNotFoundException("User cannot be null");
-//        if (user.getBirthday() == null) throw new UserNotFoundException("User's birthday cannot be null");
         LocalDate today = LocalDate.now();
         int age = today.getYear() - user.getBirthday().getYear();
         if(today.getMonthValue() - user.getBirthday().getMonthValue() < 0) age -= 1;
