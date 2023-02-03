@@ -1,8 +1,8 @@
 package com.example.testproject;
 
-import com.example.testproject.model.UserResponse;
 import com.example.testproject.exception.UserNotFoundException;
 import com.example.testproject.model.User;
+import com.example.testproject.model.UserResponse;
 import com.example.testproject.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
