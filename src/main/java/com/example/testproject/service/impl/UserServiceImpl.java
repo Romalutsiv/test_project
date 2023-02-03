@@ -2,7 +2,7 @@ package com.example.testproject.service.impl;
 
 import com.example.testproject.model.UserResponse;
 import com.example.testproject.exception.UserNotFoundException;
-import com.example.testproject.model.User;
+import com.example.testproject.model.UserEntity;
 import com.example.testproject.repository.UserRepository;
 import com.example.testproject.service.UserService;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserById(long id) {
-        User userFromDb = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id = " + id + " not found!!"));
+        UserEntity userFromDb = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id = " + id + " not found!!"));
         return new UserResponse(
                     userFromDb.getFirstname(),
                     userFromDb.getLastname(),
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int getAge(@NotNull User user) {
+    public int getAge(@NotNull UserEntity user) {
 //        if (user == null) throw new UserNotFoundException("User cannot be null");
 //        if (user.getBirthday() == null) throw new UserNotFoundException("User's birthday cannot be null");
         LocalDate today = LocalDate.now();
