@@ -14,8 +14,8 @@ public class UserController {
 
     private final UserService userService;
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getOneById(@PathVariable String id){
-        UserResponse userResponse = userService.getOneById(Long.parseLong(id));
+    public ResponseEntity<UserResponse> getOneById(@PathVariable(name = "id") long id){
+        UserResponse userResponse = userService.getUserById(id);
         return ResponseEntity.ok(userResponse);
     }
 
