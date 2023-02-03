@@ -1,6 +1,6 @@
 package com.example.testproject.service.impl;
 
-import com.example.testproject.dto.UserResponse;
+import com.example.testproject.model.UserResponse;
 import com.example.testproject.exception.UserNotFoundException;
 import com.example.testproject.model.User;
 import com.example.testproject.repository.UserRepository;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {

@@ -1,4 +1,4 @@
-package com.example.testproject.dto;
+package com.example.testproject.model;
 
 import lombok.Value;
 

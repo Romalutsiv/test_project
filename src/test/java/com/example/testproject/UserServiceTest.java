@@ -1,6 +1,6 @@
 package com.example.testproject;
 
-import com.example.testproject.dto.UserResponse;
+import com.example.testproject.model.UserResponse;
 import com.example.testproject.exception.UserNotFoundException;
 import com.example.testproject.model.User;
 import com.example.testproject.service.UserService;
